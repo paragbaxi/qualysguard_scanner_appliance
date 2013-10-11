@@ -1,15 +1,17 @@
 __author__ = 'pbaxi'
 
 import csv
+import qualysapi
 from lxml import objectify, etree
-from qualysconnect.util import build_v1_connector, build_v2_connector
 from collections import defaultdict
 
 # Connect to QualysGuard API v2.
-qgc2 = build_v2_connector()
+qgc = qualysapi.connect()
 # Create request and download XML.
-request = 'appliance/?action=list&output_mode=full'
-xml_output = qgc2.request(request)
+request = '/api/2.0/fo/appliance/'
+parameters = {'action': 'list', 'output_mode': 'full'}
+print 'Downloading scanner appliance info...'
+xml_output = qgc.request(request, parameters)
 # Process XML.
 root = objectify.fromstring(xml_output)
 # XML:
@@ -70,3 +72,18 @@ print 'Successfully wrote scanners with assigned asset groups to sorted_by_scann
 with open('orphan_scanners.txt', 'wb') as myfile:
     myfile.writelines(sorted(orphan_scanners))
 print 'Successfully wrote scanners not assigned to any asset groups to orphan_scanners.txt file.'
+# Find orphan asset groups.
+orphan_asset_groups = []
+print 'Downloading asset group info...'
+asset_group_xml = qgc.request('asset_group_list.php')
+root = objectify.fromstring(asset_group_xml)
+for asset_group in root.ASSET_GROUP:
+    try:
+        if asset_group.SCANNER_APPLIANCES is not None:
+            pass
+    except:
+        orphan_asset_groups.append(asset_group.TITLE.text + '\n')
+# Write orphan scanners to text file.
+with open('orphan_asset_groups.txt', 'wb') as myfile:
+    myfile.writelines(sorted(orphan_asset_groups))
+print 'Successfully wrote asset groups not assigned to any scanners to orphan_asset_groups.txt file.'
