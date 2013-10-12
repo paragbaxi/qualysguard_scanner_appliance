@@ -28,3 +28,10 @@ Ambivalent_scanner
 Lonely_scanner
 Sad_scanner
 </pre>
+
+Writes asset groups not assigned to any scanner to orphan_asset_groups.txt file.
+Example file:
+<pre>
+Never_scanned
+Who_loves_me
+</pre>
