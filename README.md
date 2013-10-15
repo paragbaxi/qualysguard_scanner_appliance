@@ -3,8 +3,6 @@ qualysguard_scanner_appliance
 
 Information on which asset groups scanner appliances are assigned to.
 
-License: GPL (http://www.gnu.org/licenses/gpl.html)
-
 Writes asset groups with assigned scanners to sorted_by_asset_group.csv file.
 Example file:
 <pre>
