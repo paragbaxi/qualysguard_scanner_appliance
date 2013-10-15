@@ -25,9 +25,10 @@ Writes scanners not assigned to any asset groups to orphan_scanners.txt file.
 
 Example file:
 <pre>
+Consultant_virtual_scanner
 Always_available_scanner
-Lord_Voldemort
-Superman_scanner
+Voldemort
+ET_scanner
 </pre>
 
 Writes asset groups not assigned to any scanner to orphan_asset_groups.txt file.
@@ -36,6 +37,5 @@ Example file:
 <pre>
 Never_scanned
 Reporting_asset_group
-Wolverine
 Mowgli
 </pre>
