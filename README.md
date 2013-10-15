@@ -15,8 +15,8 @@ Writes scanners with assigned asset groups to sorted_by_scanners.csv file.
 Example file:
 <pre>
 Scanner Appliance, Asset Group 1, Asset Group 2
-Snowden-Scanner, Cisco IOS Platform, NSA's DB Platform
-ZACScanner, SA SuSE11
+Snowden_Scanner, Cisco IOS Platform, NSA's DB Platform
+ZackMorrisScanner, Kelly
 </pre>
 
 Writes scanners not assigned to any asset groups to orphan_scanners.txt file.
@@ -31,7 +31,7 @@ Writes asset groups not assigned to any scanner to orphan_asset_groups.txt file.
 Example file:
 <pre>
 Never_scanned
-Reporting_asset_gropu
+Reporting_asset_group
 Wolverine
 Mowgli
 </pre>
