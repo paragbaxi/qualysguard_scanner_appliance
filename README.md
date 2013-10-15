@@ -24,14 +24,16 @@ ZACScanner, SA SuSE11
 Writes scanners not assigned to any asset groups to orphan_scanners.txt file.
 Example file:
 <pre>
-Ambivalent_scanner
-Lonely_scanner
-Sad_scanner
+Always_available_scanner
+Lord_Voldemort
+Superman_scanner
 </pre>
 
 Writes asset groups not assigned to any scanner to orphan_asset_groups.txt file.
 Example file:
 <pre>
 Never_scanned
-Who_loves_me
+Reporting_asset_gropu
+Wolverine
+Mowgli
 </pre>
