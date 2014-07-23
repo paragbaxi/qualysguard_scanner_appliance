@@ -5,27 +5,17 @@ import qualysapi
 from lxml import objectify, etree
 from collections import defaultdict
 
-# Connect to QualysGuard API v2.
+# Connect to QualysGuard API.
 qgc = qualysapi.connect()
 # Create request and download XML.
-request = '/api/2.0/fo/appliance/'
-parameters = {'action': 'list', 'output_mode': 'full'}
-print 'Downloading scanner appliance info...'
+request = '/msp/scheduled_scans.php'
+parameters = {'list': 'all'}
+print 'Downloading list of scheduled scans...'
 xml_output = qgc.request(request, parameters)
 # Process XML.
 root = objectify.fromstring(xml_output)
-# XML:
-# Scanner
-# -- AG
-# -- AG2
-# Scanner2
-# -- AG
-#
-# Change to:
-# AG
-#  -- SCANN
-#
-# Count number of uniquely assigned scanners & asset groups.
+# Combine IPs being scanned.
+# Combine asset groups
 max_number_of_scanners = 0
 max_number_of_asset_groups = 0
 orphan_scanners = []
